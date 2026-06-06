@@ -1,6 +1,10 @@
 # Forever E-Commerce
 
+**GitHub:** https://github.com/Taniya0613/FOREVER-UPDATED
+
 MERN stack e-commerce application with customer storefront, admin panel, and REST API.
+
+> Full deploy steps: see [DEPLOY.md](./DEPLOY.md)
 
 ## Project Structure
 
