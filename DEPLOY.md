@@ -10,13 +10,35 @@ Repo: https://github.com/Taniya0613/FOREVER-UPDATED
 
 ---
 
-## Step 1: Backend on Render
+## Step 1: Backend on Render (FREE)
 
-1. Open [Render Dashboard](https://dashboard.render.com)
-2. **New +** → **Blueprint**
-3. Connect GitHub repo: `Taniya0613/FOREVER-UPDATED`
-4. Render will read `render.yaml` and create `forever-backend`
-5. Add these **Environment Variables**:
+### Option A — Manual (recommended, card usually NOT needed)
+
+1. [Render Dashboard](https://dashboard.render.com) → **New +** → **Web Service**
+2. Connect repo: `Taniya0613/FOREVER-UPDATED`
+3. Settings:
+
+| Setting | Value |
+|---------|--------|
+| Name | `forever-backend` |
+| Root Directory | `backend` |
+| Runtime | Node |
+| Build Command | `npm install` |
+| Start Command | `npm start` |
+| **Instance Type** | **Free** |
+
+4. Environment Variables add karo (neeche table)
+5. **Create Web Service** — deploy free ho jayega
+
+> Free tier: 15 min inactive ke baad sleep hota hai; pehli request par 30–60 sec lag sakta hai. [Render free docs](https://render.com/docs/free)
+
+### Option B — Blueprint
+
+1. **New +** → **Blueprint** → repo select karo
+2. `render.yaml` mein ab `plan: free` hai
+3. Agar phir bhi card maange → **Cancel** karke **Option A** use karo (Blueprint kabhi card on file maangta hai)
+
+Blueprint card modal aaye to **Cancel** dabao aur upar wala manual Web Service method use karo.
 
 | Key | Value |
 |-----|--------|
