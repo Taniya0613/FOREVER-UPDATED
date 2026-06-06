@@ -40,6 +40,8 @@ Repo: https://github.com/Taniya0613/FOREVER-UPDATED
 
 Blueprint card modal aaye to **Cancel** dabao aur upar wala manual Web Service method use karo.
 
+### Environment Variables (dono options ke liye)
+
 | Key | Value |
 |-----|--------|
 | `MONGODB_URI` | MongoDB Atlas connection string |
@@ -50,10 +52,8 @@ Blueprint card modal aaye to **Cancel** dabao aur upar wala manual Web Service m
 | `CLOUDINARY_API_KEY` | Cloudinary API key |
 | `CLOUDINARY_SECRET_KEY` | Cloudinary secret |
 
-6. Deploy karo. API URL milega jaise:
-   `https://forever-backend.onrender.com`
-
-7. Browser mein open karo — `API Working` dikhna chahiye.
+Deploy ke baad API URL milega: `https://forever-backend.onrender.com`  
+Browser mein open karo — **API Working** dikhna chahiye.
 
 ### MongoDB Atlas (free)
 
