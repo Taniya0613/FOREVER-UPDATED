@@ -84,53 +84,65 @@ const Collection = () => {
   },[sortType])
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
-      
-      {/* Filter Options */}
-      <ScrollReveal className='min-w-60'>
-        <p onClick={()=>setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2 btn-animate'>FILTERS
-          <img className={`h-3 sm:hidden transition-transform duration-300 ${showFilter ? 'rotate-90' : ''}`} src={assets.dropdown_icon} alt="" />
-        </p>
-        {/* Category Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 mt-6 glass-panel rounded ${showFilter ? '' :'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Men'} onChange={toggleCategory}/> Men
-            </p>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Women'} onChange={toggleCategory}/> Women
-            </p>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Kids'} onChange={toggleCategory}/> kids
-            </p>
+    <div className='flex flex-col lg:flex-row gap-6 lg:gap-10 pt-10 border-t w-full max-w-full overflow-x-hidden'>
+
+      {/* Filter Options — always visible on desktop, no scroll-reveal delay */}
+      <aside className='w-full lg:w-56 xl:w-60 shrink-0 lg:sticky lg:top-24 lg:self-start'>
+        <button
+          type='button'
+          onClick={()=>setShowFilter(!showFilter)}
+          className='my-2 text-xl flex items-center cursor-pointer gap-2 btn-animate lg:cursor-default'
+        >
+          FILTERS
+          <img
+            className={`h-3 lg:hidden transition-transform duration-300 ${showFilter ? 'rotate-90' : ''}`}
+            src={assets.dropdown_icon}
+            alt=""
+          />
+        </button>
+
+        <div className={`collection-filters glass-panel rounded-lg border border-gray-200 overflow-hidden ${showFilter ? 'block' : 'hidden'} lg:block`}>
+          {/* Category Filter */}
+          <div className='border-b border-gray-200 px-5 py-4'>
+            <p className='mb-3 text-sm font-medium tracking-wide'>CATEGORIES</p>
+            <div className='flex flex-col gap-2.5 text-sm font-light text-gray-700'>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Men'} onChange={toggleCategory}/> Men
+              </label>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Women'} onChange={toggleCategory}/> Women
+              </label>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Kids'} onChange={toggleCategory}/> Kids
+              </label>
+            </div>
+          </div>
+
+          {/* SubCategory Filter */}
+          <div className='px-5 py-4'>
+            <p className='mb-3 text-sm font-medium tracking-wide'>TYPE</p>
+            <div className='flex flex-col gap-2.5 text-sm font-light text-gray-700'>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Topwear'} onChange={toggleSubCategory}/> Topwear
+              </label>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Bottomwear'} onChange={toggleSubCategory}/> Bottomwear
+              </label>
+              <label className='flex items-center gap-2 cursor-pointer'>
+                <input className='w-3.5 h-3.5 accent-black' type="checkbox" value={'Winterwear'} onChange={toggleSubCategory}/> Winterwear
+              </label>
+            </div>
           </div>
         </div>
-        {/* SubCategory Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 my-5 glass-panel rounded ${showFilter ? '' :'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>TYPE</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Topwear'} onChange={toggleSubCategory}/> Topwear
-            </p>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Bottomwear'} onChange={toggleSubCategory}/> Bottomwear
-            </p>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Winterwear'} onChange={toggleSubCategory}/> Winterwear
-            </p>
-          </div>
-        </div>
-      </ScrollReveal>
+      </aside>
 
       {/* Right Side */}
-      <div className='flex-1'>
+      <div className='flex-1 min-w-0 w-full'>
 
         <ScrollReveal>
           <div className='flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4'>
               <Title text1={'ALL'} text2={'COLLECTIONS'} />
-              {/* Porduct Sort */}
-              <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-3 py-2 w-full sm:w-auto btn-animate'>
+              <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-3 py-2 w-full sm:w-auto btn-animate bg-white/80'>
                 <option value="relavent">Sort by: Relevant</option>
                 <option value="low-high">Sort by: Low to High</option>
                 <option value="high-low">Sort by: High to Low</option>
@@ -138,8 +150,7 @@ const Collection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Map Products */}
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+        <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-6'>
           {
             filterProducts.map((item,index)=>(
               <ProductItem key={index} index={index} name={item.name} id={item._id} price={item.price} image={item.image} />
